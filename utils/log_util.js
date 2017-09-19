@@ -33,7 +33,7 @@ var formatRes = function (ctx, resTime) {
     // 响应状态码
     logText += 'response status: ' + ctx.status + '\n';
     // 响应内容
-    logText += 'response body: ' + JSON.stringify(ctx.body) + '\n';
+    logText += 'response body: ' + '\n' + JSON.stringify(ctx.body) + '\n';
     // 响应日志结束
     logText += "*************** response log end ***************" + "\n";
     return logText;
