@@ -4,9 +4,10 @@ const views = require('koa-views');
 const json = require('koa-json');
 const onerror = require('koa-onerror');
 const bodyparser = require('koa-bodyparser');
+const koaStatic = require('koa-static');
 const logUtil = require('./utils/log_util');
 
-const routes = require('./routes/route');
+const router = require('./routers/route');
 
 // error handler
 onerror(app);
@@ -18,7 +19,7 @@ app.use(bodyparser({
 
 app.use(json());
 
-app.use(require('koa-static')(__dirname + '/public'));
+app.use(koaStatic(__dirname + '/public'));
 
 app.use(views(__dirname + '/views', {
 	extension: 'pug'
@@ -44,7 +45,8 @@ app.use(async (ctx, next) => {
 });
 
 // 路由入口
-routes(app);
+app.use(router.routes())
+	.use(router.allowedMethods());
 
 // error-handling
 app.on('error', (err, ctx) => {
