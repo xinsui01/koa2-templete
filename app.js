@@ -5,16 +5,22 @@ const json = require('koa-json');
 const onerror = require('koa-onerror');
 const bodyparser = require('koa-bodyparser');
 const koaStatic = require('koa-static');
+const jwt = require('jsonwebtoken');
+const koaJwt = require('koa-jwt');
 const logUtil = require('./utils/log_util');
-
+const jwtConfig = require('./config/jwt_config');
 const router = require('./routers/route');
-
 // error handler
 onerror(app);
 
 // middlewares
 app.use(bodyparser({
 	enableTypes: ['json', 'form', 'text']
+}));
+
+// jwt
+app.use(koaJwt({secret: jwtConfig.secret}).unless({
+	path: [/^\/api\/login/]		// 数据中的路径不需要要通过jwt验证
 }));
 
 app.use(json());
