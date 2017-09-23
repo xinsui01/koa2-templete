@@ -13,9 +13,7 @@ router.get('/', async (ctx, next) => {
       overwrite: false
     }
   )
-  await ctx.render('index', {
-    title: 'Hello Koa 2!'
-  });
+  ctx.body = 'Hello Koa2!!';
 });
 
 module.exports = router;

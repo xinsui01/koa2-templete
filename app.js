@@ -30,7 +30,7 @@ app.use(cors({
 
 // jwt
 app.use(jwt({secret: jwtConfig.secret}).unless({
-	path: [/^\/api\/login/, /^\/api\/register/]		// 数据中的路径不需要要通过jwt验证
+	path: [/^(?!\/api).*/,/^\/api\/login/, /^\/api\/register/]		// 数据中的路径不需要要通过jwt验证
 }));
 
 app.use(static(__dirname + '/public'));
@@ -57,6 +57,14 @@ app.use(async (ctx, next) => {
 // 路由入口
 app.use(router.routes())
 	.use(router.allowedMethods());
+
+// 404 重定向到/
+app.use(async (ctx, next) => {
+	if(ctx.status === 404) {
+		ctx.redirect('/');
+	}
+	next();
+})
 
 // error-handling
 app.on('error', (err, ctx) => {
