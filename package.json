@@ -12,24 +12,23 @@
     "debug": "^4.1.1",
     "jsonwebtoken": "^8.5.1",
     "kcors": "^2.2.2",
-    "koa": "^2.7.0",
+    "koa": "^2.11.0",
     "koa-bodyparser": "^4.2.1",
     "koa-convert": "^1.2.0",
     "koa-json": "^2.0.2",
     "koa-jwt": "^3.6.0",
     "koa-onerror": "^4.1.0",
-    "koa-router": "^7.4.0",
+    "koa-router": "^8.0.8",
     "koa-static": "^5.0.0",
-    "log4js": "^4.5.1",
-    "pug": "^2.0.4",
-    "util": "^0.12.1"
+    "log4js": "^6.1.2",
+    "util": "^0.12.2"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-preset-es2015-node5": "^1.2.0",
     "chai": "^4.2.0",
-    "mocha": "^6.2.0",
-    "nodemon": "^1.19.1",
+    "mocha": "^7.1.1",
+    "nodemon": "^2.0.2",
     "supertest": "^4.0.2"
   }
 }
